@@ -8,12 +8,12 @@ Solution to the Exercise 4.5 of the book Reinforcement Learning by Sutton
 
 example output 5x5
 
-0 0 1 1 2 2 
-0 0 0 1 1 2 
-1 1 0 0 1 1 
-2 1 1 0 0 1 
-2 2 1 1 0 0 
-3 2 2 1 0 0 
+0 0 1 1 2 2 <br>
+0 0 0 1 1 2 <br>
+1 1 0 0 1 1 <br>
+2 1 1 0 0 1 <br>
+2 2 1 1 0 0 <br>
+3 2 2 1 0 0 <br>
 
 # gambler-problem-value-iteration
 solution to the problem 4.9 of the book Reinforcement Learning by Sutton
