@@ -31,3 +31,24 @@ using probability = 0.55
 ![screen shot 2018-02-07 at 00 50 22](https://user-images.githubusercontent.com/13267840/35904770-a061e2b6-0ba1-11e8-8009-e26ff419704a.png)
 ![screen shot 2018-02-07 at 00 49 38](https://user-images.githubusercontent.com/13267840/35904771-a078c0bc-0ba1-11e8-9d32-37b4999cbf0c.png)
 
+# Windy Gridworld
+Solution to the Example 6.5 of the book Reinforcement Learning by Sutton
+Output
+
+ R D R R R R R R R D <br>
+ R R R R R R R R L D <br>
+ U R R R R R R U R D <br>
+ R R U U R R R G R D <br>
+ R R R R R R U D L L <br>
+ R R R R R L D D D U <br>
+ R R R R D R L D D L <br>
+ 0 0 0 1 1 1 2 2 1 0 <br>
+ 
+ # Cliff Walking
+ Solution to the Example 6.6 of the book Reinforcement Learning by Sutton
+ Output
+ 
+ R R D R R R D R R D R D <br>
+ D R R R D D R D D D D D <br>
+ R R R R R R R R R R R D <br>
+ U R D R R L U L L D R G <br>
