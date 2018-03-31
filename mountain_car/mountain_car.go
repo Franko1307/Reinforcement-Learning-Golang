@@ -31,7 +31,7 @@ func main() {
 	rand.Seed(time.Now().Unix())
 
 	number_of_tilings := 8
-	alpha := 0.1
+	alpha := 0.4
 	episodes := 500
 
 	vf := valueFunction{}
