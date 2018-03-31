@@ -53,6 +53,6 @@ Output
  R R R R R R R R R R R D <br>
  U R D R R L U L L D R G <br>
  
- # Mountain Car 
+ # Mountain Car using Sarsa with semi-gradient and coarse coding.
  
  ![output](https://user-images.githubusercontent.com/13267840/38159660-f7619f00-3461-11e8-8884-1155d8fc060a.png)
