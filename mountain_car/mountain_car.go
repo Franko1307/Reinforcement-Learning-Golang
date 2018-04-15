@@ -1,6 +1,6 @@
 package main
 
-import "github.com/sarsa"
+import "github.com/Reinforcement-Learning-Golang/sarsa"
 
 /*
    Mountain car problem by Francisco Enrique Cordova Gonzalez
@@ -16,12 +16,14 @@ import (
 	"time"
 )
 
+//Legal actions
 const (
 	action_reverse int = iota - 1
 	action_zero
 	action_forward
 )
 
+//position and velocity bounds
 const (
 	position_min = -1.2
 	position_max = 0.5
@@ -46,7 +48,7 @@ type State struct {
 func NewState() State {
 	s := State{position: -0.5, velocity: 0}
 	s.v = &sarsa.ValueFunction{}
-	s.v.New(8, 0.5/8)
+	s.v.New(1, 2048, 8, 0.4/8)
 	s.max_position = 0.5
 	s.min_position = -1.2
 	s.max_velocity = 0.07
@@ -70,13 +72,12 @@ func (s State) GetActions() []string {
 	actions = append(actions, "forward")
 	return actions
 }
-func (s State) GetActiveTiles(action string) []int {
-	//fmt.Println("Hello: ", s.position, s.velocity, s.posScale)
+func (s State) GetActiveTiles(action string) [][]int {
 	_pos := math.Floor(s.position * s.posScale * float64(s.v.Tilings))
-	//fmt.Println("macho")
-	_vel := math.Floor(s.velocity * s.velScale * float64(s.v.Tilings))
-	tiles := make([]int, 0)
 
+	_vel := math.Floor(s.velocity * s.velScale * float64(s.v.Tilings))
+	tiles := make([][]int, 1)
+	tiles[0] = make([]int, 1)
 	for tile := 0; tile < s.v.Tilings; tile++ {
 		key := bytes.NewBufferString("") //this is the key that we'll use to save elements in our hash table
 
@@ -91,7 +92,7 @@ func (s State) GetActiveTiles(action string) []int {
 
 		key.WriteString(action)
 
-		tiles = append(tiles, s.Idx(key.String()))
+		tiles[0] = append(tiles[0], s.Idx(key.String()))
 	}
 	return tiles
 }
@@ -128,25 +129,23 @@ func (s State) TakeAction(action string) (sarsa.State, float64) {
 func main() {
 	rand.Seed(time.Now().Unix())
 	state := NewState()
-	episodes := 500
+	episodes := 2000
 	for episode := 0; episode < episodes; episode++ {
-		steps := sarsa.SemiGradientSarsa(state, state.v)
+		steps := sarsa.SemiGradientSarsa(state, getAction, state.v)
 		fmt.Println(episode, steps)
 	}
 
-	/*
-		number_of_tilings := 8
-		alpha := 0.5
-		episodes := 500
+}
 
-		vf := valueFunction{}
-		vf.New(number_of_tilings, alpha)
-
-		for episode := 0; episode < episodes; episode++ {
-			steps := semiGradientSarsa(&vf)
-			fmt.Println(episode, steps)
-		}
-	*/
+func getAction(state sarsa.State, vf *sarsa.ValueFunction) string {
+	values := make([]float64, 0)
+	actions := state.GetActions()
+	for _, action := range actions {
+		values = append(values, sarsa.ValueOf(state, action, vf))
+	}
+	//	fmt.Println("Actions: ", values)
+	ac := actions[getIdxMax(values)]
+	return ac
 }
 
 func (s *State) Idx(key string) int {
@@ -163,6 +162,26 @@ func (s *State) Idx(key string) int {
 	//if the elemen is not in the hast table, the element is added.
 	s.hash_table[key] = len(s.hash_table)
 	return len(s.hash_table) - 1
+}
+
+func getIdxMax(slice []float64) int {
+	idx := 0
+	max := slice[idx]
+	//get the idx of the biggest element
+	for i := 1; i < len(slice); i++ {
+		if max < slice[i] {
+			idx = i
+			max = slice[i]
+		}
+		//If max and slice are equal, we randomly change so have more exploration in the algorithm
+		if max == slice[i] {
+			if rand.Float64() <= 0.5 {
+				idx = i
+				max = slice[i]
+			}
+		}
+	}
+	return idx
 }
 
 //hash function
