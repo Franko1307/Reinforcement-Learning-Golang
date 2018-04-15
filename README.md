@@ -41,6 +41,9 @@ Solution to the Example 6.5 of the book Reinforcement Learning by Sutton
 <br> Output 9 actions: <br> 
 ![screen shot 2018-04-14 at 19 07 44](https://user-images.githubusercontent.com/13267840/38774181-2590cab6-4017-11e8-8c11-8b841baa15c5.png)
 
+<br> Output stochastic: <br>
+
+![screen shot 2018-04-14 at 19 22 46](https://user-images.githubusercontent.com/13267840/38774251-40a53808-4019-11e8-8eae-d33edf245bc7.png)
 
  
  # Cliff Walking
