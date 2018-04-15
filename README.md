@@ -33,25 +33,23 @@ using probability = 0.55
 
 # Windy Gridworld
 Solution to the Example 6.5 of the book Reinforcement Learning by Sutton
-Output
+<br> Output 4 actions: <br>
+![screen shot 2018-04-14 at 19 04 48](https://user-images.githubusercontent.com/13267840/38774175-cfb9991a-4016-11e8-8923-920351a24bed.png)
+<br> Output 8 actions: <br>
+![screen shot 2018-04-14 at 19 06 13](https://user-images.githubusercontent.com/13267840/38774177-f2605774-4016-11e8-97c8-c0e34ab15bbd.png)
 
- R D R R R R R R R D <br>
- R R R R R R R R L D <br>
- U R R R R R R U R D <br>
- R R U U R R R G R D <br>
- R R R R R R U D L L <br>
- R R R R R L D D D U <br>
- R R R R D R L D D L <br>
- 0 0 0 1 1 1 2 2 1 0 <br>
+<br> Output 9 actions: <br> 
+![screen shot 2018-04-14 at 19 07 44](https://user-images.githubusercontent.com/13267840/38774181-2590cab6-4017-11e8-8c11-8b841baa15c5.png)
+
+
  
  # Cliff Walking
  Solution to the Example 6.6 of the book Reinforcement Learning by Sutton
- Output
+ Output <br>
  
- R R D R R R D R R D R D <br>
- D R R R D D R D D D D D <br>
- R R R R R R R R R R R D <br>
- U R D R R L U L L D R G <br>
+![screen shot 2018-04-14 at 19 12 19](https://user-images.githubusercontent.com/13267840/38774197-c8fd42c4-4017-11e8-9931-866d88e409c8.png)
+
+<br>
  
  # Mountain Car using Sarsa with semi-gradient and coarse coding.
  
